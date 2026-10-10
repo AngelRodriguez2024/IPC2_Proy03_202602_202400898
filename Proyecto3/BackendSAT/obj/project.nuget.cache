@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "Sae2zPdPuas=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\BackendSAT.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\angel\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.2\\microsoft.aspnetcore.openapi.10.0.2.nupkg.sha512",
+    "C:\\Users\\angel\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "El paquete \"Microsoft.OpenApi\" 2.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "projectPath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\BackendSAT.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\BackendSAT.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}

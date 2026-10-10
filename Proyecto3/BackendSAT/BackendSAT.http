@@ -1,0 +1,9 @@
+### Prueba de carga de RTU
+POST http://localhost:5130/CargarRTU
+Content-Type: application/json
+
+[
+  { "nit": "7378106", "nombre": "Empresa ABC, S.A." },
+  { "nit": "8338817", "nombre": "Comercial XYZ, S.A." },
+  { "nit": "12345", "nombre": "NIT Invalido Pruebas" }
+]
