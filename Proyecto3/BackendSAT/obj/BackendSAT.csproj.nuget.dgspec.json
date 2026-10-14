@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\BackendSAT.csproj": {}
+    "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3Final\\BackendSAT\\BackendSAT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\BackendSAT.csproj": {
+    "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3Final\\BackendSAT\\BackendSAT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\BackendSAT.csproj",
+        "projectUniqueName": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3Final\\BackendSAT\\BackendSAT.csproj",
         "projectName": "BackendSAT",
-        "projectPath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\BackendSAT.csproj",
+        "projectPath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3Final\\BackendSAT\\BackendSAT.csproj",
         "packagesPath": "C:\\Users\\angel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\obj\\",
+        "outputPath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3Final\\BackendSAT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\angel\\AppData\\Roaming\\NuGet\\NuGet.Config",

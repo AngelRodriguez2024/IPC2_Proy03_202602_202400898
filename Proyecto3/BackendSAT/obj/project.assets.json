@@ -88,11 +88,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\BackendSAT.csproj",
+      "projectUniqueName": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3Final\\BackendSAT\\BackendSAT.csproj",
       "projectName": "BackendSAT",
-      "projectPath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\BackendSAT.csproj",
+      "projectPath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3Final\\BackendSAT\\BackendSAT.csproj",
       "packagesPath": "C:\\Users\\angel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3\\BackendSAT\\obj\\",
+      "outputPath": "C:\\Users\\angel\\OneDrive\\Desktop\\Proyecto3Final\\BackendSAT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\angel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -574,7 +574,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Microsoft.OpenApi\" 2.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"

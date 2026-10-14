@@ -11,14 +11,17 @@ namespace BackendSAT
             Nombre = nombre;
         }
 
+        // Método para validar la regla del NIT según la SAT
         public static bool EsNitValido(string nit)
         {
             if (string.IsNullOrWhiteSpace(nit)) return false;
 
+            // Limpiamos guiones o espacios por si vienen en el texto
             nit = nit.Trim().ToUpper().Replace("-", "");
 
             if (nit.Length < 2) return false;
 
+            // El último carácter es el dígito verificador ('K' o número)
             char digitoVerificador = nit[nit.Length - 1];
             string cuerpoNit = nit.Substring(0, nit.Length - 1);
 
