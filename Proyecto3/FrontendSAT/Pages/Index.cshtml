@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Carga de Datos SAT";
+}
+
+<div class="container mt-4">
+    <h2>Gestión de Envío de Mensajes (JSON)</h2>
+    <hr />
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="tipoMensaje" class="form-label">Tipo de Solicitud:</label>
+            <select name="tipoMensaje" class="form-select" required>
+                <option value="RTU">Actualizar RTU</option>
+                <option value="FACTURA">Solicitud de Autorización de Facturas</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="archivoJson" class="form-label">Seleccionar archivo JSON:</label>
+            <input type="file" name="archivoJson" class="form-control" accept=".json" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar a la API</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.RespuestaJson))
+    {
+        <div class="mt-4">
+            <h4>Respuesta de la API:</h4>
+            <pre class="bg-light p-3 border">@Model.RespuestaJson</pre>
+        </div>
+    }
+</div>
