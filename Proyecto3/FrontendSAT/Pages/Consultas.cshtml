@@ -3,27 +3,33 @@
 @{
     ViewData["Title"] = "Consultas y Reportes";
 }
+<style media="print">
+    .btn, form { display: none !important; }
+</style>
 
-<div class="container mt-4">
-    <h2>Apartado de Peticiones y Reportes</h2>
+<div class="container mt-4" id="seccionReportePDF">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Apartado de Peticiones y Reportes</h2>
+        <button onclick="generarPDF()" class="btn btn-outline-danger">Descargar Todo en PDF</button>
+    </div>
     <hr />
 
-    <!-- 1. Consultar Contribuyente -->
     <div class="card mb-4">
-        <div class="card-header bg-primary text-white">1. Consultar Contribuyente</div>
+        <div class="card-header bg-primary text-white">1. Consultar Contribuyente y Listado de Facturas</div>
         <div class="card-body">
-            <form method="get" asp-page-handler="ConsultarContribuyente" class="row g-3">
+            <form method="get" class="row g-3">
+                <input type="hidden" name="handler" value="ConsultarContribuyente" />
                 <div class="col-md-3">
                     <label class="form-label">NIT:</label>
                     <input type="text" name="nit" class="form-control" required />
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Fecha Inicio:</label>
-                    <input type="text" name="fechaInicio" class="form-control" placeholder="dd/mm/yyyy" required />
+                    <label class="form-label">Fecha Inicio (dd/MM/yyyy):</label>
+                    <input type="text" name="fechaInicio" class="form-control" placeholder="01/01/2025" required />
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Fecha Fin:</label>
-                    <input type="text" name="fechaFin" class="form-control" placeholder="dd/mm/yyyy" required />
+                    <label class="form-label">Fecha Fin (dd/MM/yyyy):</label>
+                    <input type="text" name="fechaFin" class="form-control" placeholder="31/01/2025" required />
                 </div>
                 <div class="col-md-3 d-flex align-items-end">
                     <button type="submit" class="btn btn-success w-100">Consultar</button>
@@ -32,47 +38,121 @@
 
             @if (Model.ResultadoConsulta != null)
             {
-                <div class="mt-3">
-                    <p><strong>Total Facturas:</strong> @Model.ResultadoConsulta.totalFacturasAutorizadas</p>
-                    <p><strong>Monto Total:</strong> Q @Model.ResultadoConsulta.montoTotalFacturado</p>
+                <div class="alert alert-info mt-3">
+                    <p><strong>Total Facturas Autorizadas:</strong> @Model.ResultadoConsulta.totalFacturasAutorizadas</p>
+                    <p><strong>Monto Total Facturado:</strong> Q @Model.ResultadoConsulta.montoTotalFacturado</p>
+                </div>
+
+                <h5 class="mt-4">Listado de Facturas</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped text-center">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Autorización</th>
+                                <th>Fecha Original</th>
+                                <th>NIT Emisor</th>
+                                <th>NIT Receptor</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var f in Model.ResultadoConsulta.facturas)
+                            {
+                                <tr>
+                                    <td>@f.codigoAutorizacion</td>
+                                    <td>@f.tiempo</td>
+                                    <td>@f.nitEmisor</td>
+                                    <td>@f.nitReceptor</td>
+                                    <td>Q @f.total</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             }
         </div>
     </div>
 
-    <!-- 2. Resumen de IVA por Fecha -->
     <div class="card mb-4">
-        <div class="card-header bg-secondary text-white">2. Resumen de IVA por Fecha y NIT</div>
+        <div class="card-header bg-danger text-white">2. Reporte de Errores por Rango de Fechas</div>
         <div class="card-body">
-            <form method="get" asp-page-handler="ResumenIva" class="row g-3">
+            <form method="get" class="row g-3">
+                <input type="hidden" name="handler" value="ReporteErrores" />
+                <div class="col-md-5">
+                    <label class="form-label">Fecha Inicio (dd/MM/yyyy):</label>
+                    <input type="text" name="fechaInicio" class="form-control" placeholder="01/01/2025" required />
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label">Fecha Fin (dd/MM/yyyy):</label>
+                    <input type="text" name="fechaFin" class="form-control" placeholder="31/01/2025" required />
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-danger w-100">Ver Reporte</button>
+                </div>
+            </form>
+
+            @if (Model.ReporteErrores != null)
+            {
+                <div class="bg-light p-3 border mt-3" style="font-family: monospace; font-size: 1.1rem;">
+                    FECHA: @Model.RangoFechasReporte <br/><br/>
+                    Cantidad total de facturas recibidas: @Model.ReporteErrores.totalRecibidas <br/><br/>
+                    Listado de errores en facturas recibidas <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;NIT emisor inválido: @Model.ReporteErrores.emisorInvalido errores <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;NIT receptor inválido: @Model.ReporteErrores.receptorInvalido errores <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;NIT emisor inexistente: @Model.ReporteErrores.emisorInexistente inexistentes <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;NIT receptor inexistente: @Model.ReporteErrores.receptorInexistente inexistentes <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;IVA mal calculado: @Model.ReporteErrores.ivaMalCalculado errores <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;TOTAL mal calculado: @Model.ReporteErrores.totalMalCalculado errores <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;REFERENCIA duplicada: @Model.ReporteErrores.referenciaDuplicada errores <br/><br/>
+                    Cantidad de facturas sin errores: @Model.ReporteErrores.facturasSinErrores <br/>
+                    Cantidad de emisores de facturas: @Model.ReporteErrores.emisoresUnicos <br/>
+                    Cantidad de receptores de facturas: @Model.ReporteErrores.receptoresUnicos <br/><br/>
+                    FECHA: @Model.RangoFechasReporte
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-secondary text-white">3. Resumen de IVA por Fecha (Con Gráfica)</div>
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <input type="hidden" name="handler" value="ResumenIva" />
                 <div class="col-md-6">
-                    <label class="form-label">Fecha a filtrar:</label>
-                    <input type="text" name="fecha" class="form-control" placeholder="dd/mm/yyyy" required />
+                    <label class="form-label">Fecha a filtrar (dd/MM/yyyy):</label>
+                    <input type="text" name="fecha" class="form-control" placeholder="15/01/2025" required />
                 </div>
                 <div class="col-md-6 d-flex align-items-end">
-                    <button type="submit" class="btn btn-secondary w-100">Obtener Resumen IVA</button>
+                    <button type="submit" class="btn btn-secondary w-100">Generar Resumen de IVA</button>
                 </div>
             </form>
 
             @if (!string.IsNullOrEmpty(Model.JsonResumenIva))
             {
-                <pre class="bg-light p-3 border mt-3">@Model.JsonResumenIva</pre>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <pre id="vistaJsonIva" class="bg-light p-3 border h-100" style="font-size: 0.9rem;"></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="graficaIva" width="400" height="200"></canvas>
+                    </div>
+                </div>
             }
         </div>
     </div>
 
-    <!-- 3. Resumen por Rango de Fechas -->
     <div class="card mb-4">
-        <div class="card-header bg-dark text-white">3. Resumen por Rango de Fechas</div>
+        <div class="card-header bg-dark text-white">4. Resumen por Rango de Fechas (Con Gráfica)</div>
         <div class="card-body">
-            <form method="get" asp-page-handler="ResumenRango" class="row g-3">
+            <form method="get" class="row g-3">
+                <input type="hidden" name="handler" value="ResumenRango" />
                 <div class="col-md-4">
                     <label class="form-label">Fecha Inicio:</label>
-                    <input type="text" name="fechaInicio" class="form-control" placeholder="dd/mm/yyyy" required />
+                    <input type="text" name="fechaInicio" class="form-control" placeholder="01/01/2025" required />
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Fecha Fin:</label>
-                    <input type="text" name="fechaFin" class="form-control" placeholder="dd/mm/yyyy" required />
+                    <input type="text" name="fechaFin" class="form-control" placeholder="31/01/2025" required />
                 </div>
                 <div class="col-md-2">
                     <label class="form-label">Montos:</label>
@@ -82,14 +162,71 @@
                     </select>
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
-                    <button type="submit" class="btn btn-dark w-100">Filtrar</button>
+                    <button type="submit" class="btn btn-dark w-100">Generar Rango de Fechas</button>
                 </div>
             </form>
 
             @if (!string.IsNullOrEmpty(Model.JsonResumenRango))
             {
-                <pre class="bg-light p-3 border mt-3">@Model.JsonResumenRango</pre>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <pre id="vistaJsonRango" class="bg-light p-3 border h-100" style="font-size: 0.9rem;"></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="graficaRango" width="400" height="200"></canvas>
+                    </div>
+                </div>
             }
         </div>
     </div>
-</div>  
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+    function generarPDF() {
+        window.print();
+    }
+
+    const jsonIvaRaw = `@Html.Raw(Model.JsonResumenIva)`;
+    if (jsonIvaRaw && jsonIvaRaw.trim() !== "") {
+        const dataIva = JSON.parse(jsonIvaRaw);
+        
+        document.getElementById('vistaJsonIva').textContent = JSON.stringify(dataIva, null, 4);
+
+        const ctxIva = document.getElementById('graficaIva').getContext('2d');
+        new Chart(ctxIva, {
+            type: 'bar',
+            data: {
+                labels: dataIva.map(d => 'NIT ' + d.nit),
+                datasets: [
+                    { label: 'IVA Emitido', data: dataIva.map(d => d.ivaEmitido), backgroundColor: 'rgba(54, 162, 235, 0.6)' },
+                    { label: 'IVA Recibido', data: dataIva.map(d => d.ivaRecibido), backgroundColor: 'rgba(255, 99, 132, 0.6)' }
+                ]
+            }
+        });
+    }
+
+    const jsonRangoRaw = `@Html.Raw(Model.JsonResumenRango)`;
+    if (jsonRangoRaw && jsonRangoRaw.trim() !== "") {
+        const dataRango = JSON.parse(jsonRangoRaw);
+        
+        document.getElementById('vistaJsonRango').textContent = JSON.stringify(dataRango, null, 4);
+
+        const ctxRango = document.getElementById('graficaRango').getContext('2d');
+        new Chart(ctxRango, {
+            type: 'line',
+            data: {
+                labels: dataRango.map(d => d.fecha),
+                datasets: [{
+                    label: 'Monto Total',
+                    data: dataRango.map(d => d.montoTotal),
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: true
+                }]
+            }
+        });
+    }
+</script>

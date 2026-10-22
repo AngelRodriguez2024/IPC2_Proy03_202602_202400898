@@ -1,0 +1,53 @@
+@page
+@model AyudaModel
+@{
+    ViewData["Title"] = "Ayuda y Configuración";
+}
+
+<div class="container mt-4">
+    <h2>Ayuda y Administración del Sistema</h2>
+    <hr />
+
+    <!-- Datos del Estudiante -->
+    <div class="card mb-4 border-info">
+        <div class="card-header bg-info text-white">Información del Estudiante</div>
+        <div class="card-body">
+            <p><strong>Nombre:</strong> Angel Adrian Rodríguez Barrientos</p>
+            <p><strong>Curso:</strong> Introducción a la Programación y Computación 2 (IPC2)</p>
+            <p><strong>Universidad:</strong> Universidad de San Carlos de Guatemala (USAC)</p>
+        </div>
+    </div>
+
+    <!-- Documentación del Programa -->
+    <div class="card mb-4 border-secondary">
+        <div class="card-header bg-secondary text-white">Documentación del Programa</div>
+        <div class="card-body">
+            <p>Este sistema consiste en una solución Web distribuida en dos servicios:</p>
+            <ul>
+                <li><strong>Frontend (Programa 1):</strong> Desarrollado en Razor Pages para el envío de JSON y visualización de reportes</li>
+                <li><strong>Backend (Servicio 2):</strong> Web API en .NET Core encargada del procesamiento, validación de NITs y persistencia en archivos JSON.</li>
+            </ul>
+            <div class="mt-3">
+            <a href="https://github.com/AngelRodriguez2024/IPC2_Proy03_202602_202400898/blob/main/[IPC2]Proyecto_3_202400898.pdf" target="_blank" class="btn btn-info text-white">
+                Ver Documentación en PDF
+            </a>
+        </div>
+        </div>
+    </div>
+
+    <!-- Botón Inicializar -->
+    <div class="card mb-4 border-danger">
+        <div class="card-header bg-danger text-white">Restablecer Sistema</div>
+        <div class="card-body">
+            <p>Esta opción enviará un mensaje a la API para devolver el sistema al estado inicial (sin datos).</p>
+            <form method="post">
+                <button type="submit" class="btn btn-danger">Resetear Sistema</button>
+            </form>
+
+            @if (!string.IsNullOrEmpty(Model.MensajeReset))
+            {
+                <div class="alert alert-warning mt-3">@Model.MensajeReset</div>
+            }
+        </div>
+    </div>
+</div>
