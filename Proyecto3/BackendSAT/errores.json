@@ -1,0 +1,90 @@
+[
+  {
+    "Tiempo": "Guatemala, 02/04/2025 10:00 hrs.",
+    "Referencia": "E03",
+    "EmisorInvalido": false,
+    "ReceptorInvalido": false,
+    "EmisorInexistente": true,
+    "ReceptorInexistente": false,
+    "IvaMalCalculado": false,
+    "TotalMalCalculado": false,
+    "ReferenciaDuplicada": false
+  },
+  {
+    "Tiempo": "Guatemala, 02/04/2025 10:00 hrs.",
+    "Referencia": "E04",
+    "EmisorInvalido": false,
+    "ReceptorInvalido": false,
+    "EmisorInexistente": false,
+    "ReceptorInexistente": true,
+    "IvaMalCalculado": false,
+    "TotalMalCalculado": false,
+    "ReferenciaDuplicada": false
+  },
+  {
+    "Tiempo": "Guatemala, 03/04/2025 10:00 hrs.",
+    "Referencia": "E05",
+    "EmisorInvalido": true,
+    "ReceptorInvalido": false,
+    "EmisorInexistente": false,
+    "ReceptorInexistente": false,
+    "IvaMalCalculado": false,
+    "TotalMalCalculado": false,
+    "ReferenciaDuplicada": false
+  },
+  {
+    "Tiempo": "Guatemala, 03/04/2025 10:00 hrs.",
+    "Referencia": "E06",
+    "EmisorInvalido": false,
+    "ReceptorInvalido": true,
+    "EmisorInexistente": false,
+    "ReceptorInexistente": false,
+    "IvaMalCalculado": false,
+    "TotalMalCalculado": false,
+    "ReferenciaDuplicada": false
+  },
+  {
+    "Tiempo": "Guatemala, 04/04/2025 10:00 hrs.",
+    "Referencia": "E07",
+    "EmisorInvalido": false,
+    "ReceptorInvalido": false,
+    "EmisorInexistente": false,
+    "ReceptorInexistente": false,
+    "IvaMalCalculado": true,
+    "TotalMalCalculado": false,
+    "ReferenciaDuplicada": false
+  },
+  {
+    "Tiempo": "Guatemala, 05/04/2025 10:00 hrs.",
+    "Referencia": "E01",
+    "EmisorInvalido": false,
+    "ReceptorInvalido": false,
+    "EmisorInexistente": false,
+    "ReceptorInexistente": false,
+    "IvaMalCalculado": false,
+    "TotalMalCalculado": false,
+    "ReferenciaDuplicada": true
+  },
+  {
+    "Tiempo": "Guatemala, 06/04/2025 10:00 hrs.",
+    "Referencia": "E11",
+    "EmisorInvalido": true,
+    "ReceptorInvalido": false,
+    "EmisorInexistente": false,
+    "ReceptorInexistente": false,
+    "IvaMalCalculado": true,
+    "TotalMalCalculado": true,
+    "ReferenciaDuplicada": false
+  },
+  {
+    "Tiempo": "Guatemala, 06/04/2025 10:00 hrs.",
+    "Referencia": "E12",
+    "EmisorInvalido": false,
+    "ReceptorInvalido": false,
+    "EmisorInexistente": true,
+    "ReceptorInexistente": true,
+    "IvaMalCalculado": false,
+    "TotalMalCalculado": false,
+    "ReferenciaDuplicada": false
+  }
+]

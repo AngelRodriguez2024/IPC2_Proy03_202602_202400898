@@ -24,12 +24,10 @@ namespace BackendSAT
             Total = total;
             CodigoAutorizacion = "";
         }
-
-        // Genera el código yyyymmdd#########
         public static string GenerarCodigoAutorizacion(DateTime fecha, int correlativo)
         {
             string fechaFormato = fecha.ToString("yyyyMMdd");
-            string correlativoFormato = correlativo.ToString("D8"); // 8 dígitos con ceros a la izquierda
+            string correlativoFormato = correlativo.ToString("D8"); 
             return $"{fechaFormato}{correlativoFormato}";
         }
     }

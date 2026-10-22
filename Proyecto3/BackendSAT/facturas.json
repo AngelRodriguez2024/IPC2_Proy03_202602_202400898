@@ -1,0 +1,62 @@
+[
+  {
+    "Tiempo": "Guatemala, 01/04/2025 10:00 hrs.",
+    "Referencia": "E01",
+    "NitEmisor": "7378106",
+    "NitReceptor": "8338817",
+    "Valor": 1500.00,
+    "Iva": 180.00,
+    "Total": 1680.00,
+    "CodigoAutorizacion": "2025040100000001"
+  },
+  {
+    "Tiempo": "Guatemala, 01/04/2025 10:00 hrs.",
+    "Referencia": "E02",
+    "NitEmisor": "8338817",
+    "NitReceptor": "5123453",
+    "Valor": 75.50,
+    "Iva": 9.06,
+    "Total": 84.56,
+    "CodigoAutorizacion": "2025040100000002"
+  },
+  {
+    "Tiempo": "Guatemala, 04/04/2025 10:00 hrs.",
+    "Referencia": "E08",
+    "NitEmisor": "7378106",
+    "NitReceptor": "8338817",
+    "Valor": 100.00,
+    "Iva": 12.00,
+    "Total": 112.01,
+    "CodigoAutorizacion": "2025040400000001"
+  },
+  {
+    "Tiempo": "Guatemala, 05/04/2025 10:00 hrs.",
+    "Referencia": "G00001",
+    "NitEmisor": "7378106",
+    "NitReceptor": "8338817",
+    "Valor": 100.00,
+    "Iva": 12.00,
+    "Total": 112.00,
+    "CodigoAutorizacion": "2025040500000001"
+  },
+  {
+    "Tiempo": "sin fecha",
+    "Referencia": "E13",
+    "NitEmisor": "7378106",
+    "NitReceptor": "8338817",
+    "Valor": 100.00,
+    "Iva": 12.00,
+    "Total": 112.00,
+    "CodigoAutorizacion": "2026102100000001"
+  },
+  {
+    "Tiempo": "Guatemala, 07/04/2025 10:00 hrs.",
+    "Referencia": "E14",
+    "NitEmisor": "1000004",
+    "NitReceptor": "7378106",
+    "Valor": 10.05,
+    "Iva": 1.21,
+    "Total": 11.26,
+    "CodigoAutorizacion": "2025040700000001"
+  }
+]
